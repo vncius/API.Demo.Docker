@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  catalogdb:
+    image: mongo
+
+  api.demo.docker:
+    image: ${DOCKER_REGISTRY-}apidemodocker
+    build:
+      context: .
+      dockerfile: API.Demo.Docker/Dockerfile
+
+volumes:
+  mongo_data:
