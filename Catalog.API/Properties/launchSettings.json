@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "API.Demo.Docker": {
+    "Catalog.API": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

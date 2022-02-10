@@ -1,7 +1,7 @@
 ﻿using MongoDB.Driver;
-using static API.Demo.Docker.Entities.Products;
+using static Catalog.API.Entities.Products;
 
-namespace API.Demo.Docker.Data
+namespace Catalog.API.Data
 {
     public interface IProductContext
     {

@@ -1,1 +1,1 @@
-API.Demo.Docker
+Catalog.API

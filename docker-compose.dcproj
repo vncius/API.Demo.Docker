@@ -6,7 +6,7 @@
     <ProjectGuid>114598e1-5037-4fb8-bf97-ca33d69d857f</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
-    <DockerServiceName>api.demo.docker</DockerServiceName>
+    <DockerServiceName>Catalog.API</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

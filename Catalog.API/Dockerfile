@@ -6,16 +6,16 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["API.Demo.Docker/API.Demo.Docker.csproj", "API.Demo.Docker/"]
-RUN dotnet restore "API.Demo.Docker/API.Demo.Docker.csproj"
+COPY ["Catalog.API/Catalog.API.csproj", "Catalog.API/"]
+RUN dotnet restore "Catalog.API/Catalog.API.csproj"
 COPY . .
-WORKDIR "/src/API.Demo.Docker"
-RUN dotnet build "API.Demo.Docker.csproj" -c Release -o /app/build
+WORKDIR "/src/Catalog.API"
+RUN dotnet build "Catalog.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "API.Demo.Docker.csproj" -c Release -o /app/publish
+RUN dotnet publish "Catalog.API.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "API.Demo.Docker.dll"]
+ENTRYPOINT ["dotnet", "Catalog.API.dll"]

@@ -4,11 +4,11 @@ services:
   catalogdb:
     image: mongo
 
-  api.demo.docker:
-    image: ${DOCKER_REGISTRY-}apidemodocker
+  Catalog.API:
+    image: ${DOCKER_REGISTRY-}catalogapi
     build:
       context: .
-      dockerfile: API.Demo.Docker/Dockerfile
+      dockerfile: Catalog.API/Dockerfile
 
 volumes:
   mongo_data:

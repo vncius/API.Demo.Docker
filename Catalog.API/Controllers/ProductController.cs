@@ -1,8 +1,8 @@
-﻿using API.Demo.Docker.Repositories;
+﻿using Catalog.API.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using static API.Demo.Docker.Entities.Products;
+using static Catalog.API.Entities.Products;
 
-namespace API.Demo.Docker.Controllers
+namespace Catalog.API.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]

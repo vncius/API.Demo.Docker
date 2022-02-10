@@ -1,8 +1,8 @@
-﻿using API.Demo.Docker.Data;
+﻿using Catalog.API.Data;
 using MongoDB.Driver;
-using static API.Demo.Docker.Entities.Products;
+using static Catalog.API.Entities.Products;
 
-namespace API.Demo.Docker.Repositories
+namespace Catalog.API.Repositories
 {
     public class ProductRepository : IProductRepository
     {

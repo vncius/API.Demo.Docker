@@ -1,5 +1,5 @@
-using API.Demo.Docker.Data;
-using API.Demo.Docker.Repositories;
+using Catalog.API.Data;
+using Catalog.API.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,6 +1,6 @@
-﻿using static API.Demo.Docker.Entities.Products;
+﻿using static Catalog.API.Entities.Products;
 
-namespace API.Demo.Docker.Repositories
+namespace Catalog.API.Repositories
 {
     public interface IProductRepository
     {
