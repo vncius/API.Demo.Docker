@@ -69,3 +69,11 @@ services:
       - discountdb
     ports:
       - "8002:80"
+
+  gateway.api:
+    container_name: gateway.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "FileOcelotConfig:File=configuration-docker.json"
+    ports:
+      - "4420:80"
