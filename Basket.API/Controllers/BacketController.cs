@@ -1,5 +1,5 @@
-﻿using Basket.API.Entities;
-using Basket.API.GrpcServices;
+﻿using Basket.API.DTOs;
+using Basket.API.Entities;
 using Basket.API.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,17 +9,18 @@ namespace Basket.API.Controllers
     [ApiController]
     public class BacketController : Controller
     {
+        private readonly string _baseAddress;
         private readonly IBasketRepository _repository;
-        private readonly DiscountGrpcService _discountServiceGrpc;
+        private readonly HttpClient _client;
 
-
-        public BacketController(IBasketRepository repository, DiscountGrpcService discountServiceGrpc)
+        public BacketController(IBasketRepository repository, IConfiguration configuration)
         {
             _repository = repository ?? 
                 throw new ArgumentNullException(nameof(repository));
 
-            _discountServiceGrpc = discountServiceGrpc ?? 
-                throw new ArgumentNullException(nameof(discountServiceGrpc));
+            _client = new HttpClient();
+
+            _baseAddress = configuration.GetValue<string>("DiscountSettings:DiscountUrl");
         }
 
         [HttpGet("{userName}", Name = "GetBasket")]
@@ -33,12 +34,16 @@ namespace Basket.API.Controllers
         [HttpPost]
         public async Task<ActionResult<ShoppingCart>> UpdateBasket([FromBody] ShoppingCart basket)
         {
-
             foreach (var item in basket.Items)
             {
-                var coupon = await _discountServiceGrpc.GetDiscount(item.ProductName);
-                if (coupon == null) continue;
-                item.Price -= coupon.Amount;
+                var url = $"{_baseAddress}/Discount/{item.ProductName}";
+                HttpResponseMessage response = await _client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    var coupon = await response.Content.ReadFromJsonAsync<Coupon>();
+                    if (coupon == null) continue;
+                    item.Price -= coupon.Amount;
+                }
             }
 
             return Ok(await _repository.UpdateBasket(basket));

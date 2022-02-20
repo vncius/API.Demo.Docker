@@ -10,13 +10,13 @@ namespace Discount.Grpc.Services
     {
         private readonly IDiscountRepository _repository;
         private readonly IMapper _mapper;
-        private readonly ILogger _logger;
+        //private readonly ILogger _logger;
 
-        public DiscountService(IDiscountRepository repository, IMapper mapper, ILogger logger)
+        public DiscountService(IMapper mapper)
         {
-            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            //_repository = repository ?? throw new ArgumentNullException(nameof(repository));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            //_logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public override async Task<CouponModel> GetDiscount(GetDiscountRequest request, ServerCallContext context)
@@ -29,7 +29,7 @@ namespace Discount.Grpc.Services
                     $"Discount with ProductName = {request.ProductName}not found"));
             }
 
-            _logger.LogInformation($"{nameof(GetDiscount)} - {coupon.GetStringLogger()}");
+            //_logger.LogInformation($"{nameof(GetDiscount)} - {coupon.GetStringLogger()}");
 
             return _mapper.Map<CouponModel>(coupon);
         }
@@ -40,7 +40,7 @@ namespace Discount.Grpc.Services
 
             await _repository.CreateDiscount(coupon);
 
-            _logger.LogInformation($"{nameof(CreateDiscount)} - {coupon.GetStringLogger()}");
+            //_logger.LogInformation($"{nameof(CreateDiscount)} - {coupon.GetStringLogger()}");
 
             return request.Coupon;
         }
@@ -51,7 +51,7 @@ namespace Discount.Grpc.Services
 
             await _repository.UpdateDiscount(coupon);
 
-            _logger.LogInformation($"{nameof(UpdateDiscount)} - {coupon.GetStringLogger()}");
+            //_logger.LogInformation($"{nameof(UpdateDiscount)} - {coupon.GetStringLogger()}");
 
             return request.Coupon;
         }
