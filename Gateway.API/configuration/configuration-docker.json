@@ -1,9 +1,42 @@
 {
+  "SwaggerEndPoints": [
+    {
+      "Key": "Product",
+      "Config": [
+        {
+          "Name": "API Product",
+          "Version": "v1",
+          "Url": "http://catalog.api/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "Backet",
+      "Config": [
+        {
+          "Name": "API Basket",
+          "Version": "v1",
+          "Url": "http://basket.api/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "Discount",
+      "Config": [
+        {
+          "Name": "API Discount",
+          "Version": "v1",
+          "Url": "http://discount.api/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ],
   "GlobalConfiguration": {
     "BaseUrl": "http://localhost:7000"
   },
   "Routes": [
     {
+      "SwaggerKey": "Product",
       "UpstreamPathTemplate": "/Product",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/v1/Product",
@@ -16,6 +49,7 @@
       ]
     },
     {
+      "SwaggerKey": "Product",
       "UpstreamPathTemplate": "/Product/{id}",
       "UpstreamHttpMethod": [ "Get", "Delete" ],
       "DownstreamPathTemplate": "/api/v1/Product/{id}",
@@ -28,6 +62,7 @@
       ]
     },
     {
+      "SwaggerKey": "Product",
       "UpstreamPathTemplate": "/Product/GetProductByCategory/{category}",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/v1/Product/GetProductByCategory/{category}",
@@ -40,6 +75,7 @@
       ]
     },
     {
+      "SwaggerKey": "Product",
       "UpstreamPathTemplate": "/Product",
       "UpstreamHttpMethod": [ "Post", "Put" ],
       "DownstreamPathTemplate": "/api/v1/Product",
@@ -52,6 +88,7 @@
       ]
     },
     {
+      "SwaggerKey": "Backet",
       "UpstreamPathTemplate": "/Backet/{userName}",
       "UpstreamHttpMethod": [ "Get", "Delete" ],
       "DownstreamPathTemplate": "/api/v1/Backet/{userName}",
@@ -64,6 +101,7 @@
       ]
     },
     {
+      "SwaggerKey": "Backet",
       "UpstreamPathTemplate": "/Backet",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamPathTemplate": "/api/v1/Backet/",
@@ -76,6 +114,7 @@
       ]
     },
     {
+      "SwaggerKey": "Discount",
       "UpstreamPathTemplate": "/Discount/{productName}",
       "UpstreamHttpMethod": [ "Get", "Delete" ],
       "DownstreamPathTemplate": "/api/v1/Discount/{productName}",
@@ -88,6 +127,7 @@
       ]
     },
     {
+      "SwaggerKey": "Discount",
       "UpstreamPathTemplate": "/Discount",
       "UpstreamHttpMethod": [ "Post", "Put" ],
       "DownstreamPathTemplate": "/api/v1/Discount",

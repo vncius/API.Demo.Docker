@@ -5,17 +5,28 @@ var builder = WebApplication.CreateBuilder(args);
 
 var fileOcelot = builder.Configuration.GetValue<string>("FileOcelotConfig:File");
 
+builder.Services.AddControllers();
+
+builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddSwaggerForOcelot(builder.Configuration);
+
+builder.Services.AddOcelot(builder.Configuration);
+
 builder.WebHost.ConfigureAppConfiguration(
     cfg => cfg.AddJsonFile(Path.Combine("configuration", fileOcelot), 
                             optional: false, reloadOnChange: true)
 );
 
-builder.Services.AddOcelot(builder.Configuration);
 
 var app = builder.Build();
 
-app.UseOcelot().Wait();
+app.UseSwaggerForOcelotUI();
 
-app.MapGet("/", () => "Hello World!");
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.UseOcelot().Wait();
 
 app.Run();
