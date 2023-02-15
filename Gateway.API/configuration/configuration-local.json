@@ -1,0 +1,143 @@
+{
+  "SwaggerEndPoints": [
+    {
+      "Key": "Product",
+      "Config": [
+        {
+          "Name": "API Product",
+          "Version": "v1",
+          "Url": "http://localhost:5066/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "Backet",
+      "Config": [
+        {
+          "Name": "API Basket",
+          "Version": "v1",
+          "Url": "http://localhost:5000/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "Discount",
+      "Config": [
+        {
+          "Name": "API Discount",
+          "Version": "v1",
+          "Url": "http://localhost:5289/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:7000"
+  },
+  "Routes": [
+    {
+      "SwaggerKey": "Product",
+      "UpstreamPathTemplate": "/Product",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/v1/Product",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5066
+        }
+      ]
+    },
+    {
+      "SwaggerKey": "Product",
+      "UpstreamPathTemplate": "/Product/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamPathTemplate": "/api/v1/Product/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5066
+        }
+      ]
+    },
+    {
+      "SwaggerKey": "Product",
+      "UpstreamPathTemplate": "/Product/GetProductByCategory/{category}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/v1/Product/GetProductByCategory/{category}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5066
+        }
+      ]
+    },
+    {
+      "SwaggerKey": "Product",
+      "UpstreamPathTemplate": "/Product",
+      "UpstreamHttpMethod": [ "Post", "Put" ],
+      "DownstreamPathTemplate": "/api/v1/Product",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5066
+        }
+      ]
+    },
+    {
+      "SwaggerKey": "Backet",
+      "UpstreamPathTemplate": "/Backet/{userName}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamPathTemplate": "/api/v1/Backet/{userName}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5000
+        }
+      ]
+    },
+    {
+      "SwaggerKey": "Backet",
+      "UpstreamPathTemplate": "/Backet",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/v1/Backet/",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5000
+        }
+      ]
+    },
+    {
+      "SwaggerKey": "Discount",
+      "UpstreamPathTemplate": "/Discount/{productName}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamPathTemplate": "/api/v1/Discount/{productName}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5289
+        }
+      ]
+    },
+    {
+      "SwaggerKey": "Discount",
+      "UpstreamPathTemplate": "/Discount",
+      "UpstreamHttpMethod": [ "Post", "Put" ],
+      "DownstreamPathTemplate": "/api/v1/Discount",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5289
+        }
+      ]
+    }
+  ]
+}
